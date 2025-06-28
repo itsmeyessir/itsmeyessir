@@ -2,7 +2,7 @@ import requests
 import os
 from datetime import datetime, date
 
-GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
+GITHUB_TOKEN = os.getenv('MY_PAT')
 USERNAME = 'itsmeyessir'
 SVG_PATH = 'dark_mode.svg'
 
