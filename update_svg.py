@@ -3,7 +3,7 @@ import os
 from datetime import datetime, date
 
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
-USERNAME = 'itsmeyessirski'
+USERNAME = 'itsmeyessir'
 SVG_PATH = 'dark_mode.svg'
 
 # GraphQL query for GitHub stats
