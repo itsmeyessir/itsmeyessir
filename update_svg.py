@@ -23,6 +23,9 @@ query($login: String!) {
 '''
 
 def fetch_github_stats():
+    if not GITHUB_TOKEN:
+        print("[ERROR] GITHUB_TOKEN is not set. Check your workflow secret name and value.")
+        raise SystemExit(1)
     headers = {'Authorization': f'bearer {GITHUB_TOKEN}'}
     variables = {'login': USERNAME}
     response = requests.post(
@@ -30,8 +33,14 @@ def fetch_github_stats():
         json={'query': graphql_query, 'variables': variables},
         headers=headers
     )
-    response.raise_for_status()
-    data = response.json()['data']['user']
+    if response.status_code != 200:
+        print(f"[ERROR] GitHub API returned status {response.status_code}")
+        print(f"[ERROR] Response: {response.text}")
+        raise SystemExit(1)
+    data = response.json().get('data', {}).get('user')
+    if not data:
+        print(f"[ERROR] No user data returned. Full response: {response.text}")
+        raise SystemExit(1)
     return {
         'repo_count': data['repositories']['totalCount'],
         'commit_count': data['contributionsCollection']['totalCommitContributions'],
@@ -62,6 +71,7 @@ def update_svg(stats):
         f.write(svg)
 
 def main():
+    print("Token present:", bool(GITHUB_TOKEN))
     stats = fetch_github_stats()
     update_svg(stats)
 
