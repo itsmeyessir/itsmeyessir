@@ -27,4 +27,5 @@ jobs:
           git config user.email 'espaldonrobbie88@gmail.com'
           git add dark_mode.svg
           git commit -m 'Update profile SVG' || echo 'No changes to commit'
-          git push https://itsmeyessir:${{ secrets.readme }}@github.com/itsmeyessir/itsmeyessir.git
+          git remote set-url origin https://itsmeyessir:${{ secrets.readme }}@github.com/itsmeyessir/itsmeyessir.git
+          git push origin main
