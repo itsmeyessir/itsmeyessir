@@ -172,6 +172,9 @@ def update_svg(stats, svg_path):
     with open(svg_path, 'r', encoding='utf-8') as f:
         svg = f.read()
     for key, value in stats.items():
+        # Format numbers with commas if int
+        if isinstance(value, int):
+            value = f'{value:,}'
         svg = re.sub(f'id="{key}">.*?<', f'id="{key}">{value}<', svg)
     # Update uptime
     uptime = calculate_uptime()
@@ -208,6 +211,9 @@ def main():
         'issue_count': contribs['totalIssueContributions'],
         'review_count': contribs['totalPullRequestReviewContributions']
     }
+    print("[DEBUG] Stats to be written to SVG:")
+    for k, v in stats.items():
+        print(f"  {k}: {v}")
     for svg_path in SVG_PATHS:
         update_svg(stats, svg_path)
 
