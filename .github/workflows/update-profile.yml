@@ -25,6 +25,8 @@ jobs:
         run: git remote -v
       - name: Set remote URL to use PAT
         run: git remote set-url origin https://itsmeyessir:${{ secrets.readme }}@github.com/itsmeyessir/itsmeyessir.git
+      - name: Show git remote (after set-url)
+        run: git remote -v
       - name: Unset git credential helper
         run: git config --unset-all credential.helper || echo 'No credential helper set'
       - name: Commit and push changes
