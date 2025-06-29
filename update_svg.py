@@ -1,10 +1,11 @@
 import requests
 import os
+import re
 from datetime import datetime, date
 
 GITHUB_TOKEN = os.getenv('MY_PAT')
 USERNAME = 'itsmeyessir'
-SVG_PATH = 'dark_mode.svg'
+SVG_PATHS = ['dark_mode.svg', 'light_mode.svg']
 
 # GraphQL query for GitHub stats
 graphql_query = '''
@@ -59,21 +60,22 @@ def calculate_uptime():
     days = (delta.days % 365) % 30
     return f"{years} years, {months} months, {days} days"
 
-def update_svg(stats):
-    with open(SVG_PATH, 'r', encoding='utf-8') as f:
+def update_svg(stats, svg_path):
+    with open(svg_path, 'r', encoding='utf-8') as f:
         svg = f.read()
     for key, value in stats.items():
-        svg = svg.replace(f'id="{key}">0<', f'id="{key}">{value}<')
+        svg = re.sub(f'id="{key}">.*?<', f'id="{key}">{value}<', svg)
     # Update uptime
     uptime = calculate_uptime()
-    svg = svg.replace('id="uptime">your uptime here<', f'id="uptime">{uptime}<')
-    with open(SVG_PATH, 'w', encoding='utf-8') as f:
+    svg = re.sub('id="uptime">.*?<', f'id="uptime">{uptime}<', svg)
+    with open(svg_path, 'w', encoding='utf-8') as f:
         f.write(svg)
 
 def main():
     print("Token present:", bool(GITHUB_TOKEN))
     stats = fetch_github_stats()
-    update_svg(stats)
+    for svg_path in SVG_PATHS:
+        update_svg(stats, svg_path)
 
 if __name__ == '__main__':
     main()
