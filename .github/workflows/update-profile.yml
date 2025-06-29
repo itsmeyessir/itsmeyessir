@@ -23,6 +23,8 @@ jobs:
         run: python update_svg.py
       - name: Commit and push changes
         run: |
+          git config user.name 'itsmeyessir'
+          git config user.email 'espaldonrobbie88@gmail.com'
           git add dark_mode.svg
           git commit -m 'Update profile SVG' || echo 'No changes to commit'
           git push https://itsmeyessir:${{ secrets.readme }}@github.com/itsmeyessir/itsmeyessir.git
