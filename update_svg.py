@@ -24,7 +24,7 @@ query($login: String!) {
 
 def fetch_github_stats():
     if not GITHUB_TOKEN:
-        print("[ERROR] GITHUB_TOKEN is not set. Check your workflow secret name and value.")
+        print("[ERROR] MY_PAT is not set. Check your workflow secret name and value.")
         raise SystemExit(1)
     headers = {'Authorization': f'bearer {GITHUB_TOKEN}'}
     variables = {'login': USERNAME}
