@@ -21,11 +21,14 @@ jobs:
         env:
           MY_PAT: ${{ secrets.readme }}
         run: python update_svg.py
+      - name: Show git remote
+        run: git remote -v
+      - name: Set remote URL to use PAT
+        run: git remote set-url origin https://itsmeyessir:${{ secrets.readme }}@github.com/itsmeyessir/itsmeyessir.git
       - name: Commit and push changes
         run: |
           git config user.name 'itsmeyessir'
           git config user.email 'espaldonrobbie88@gmail.com'
           git add dark_mode.svg
           git commit -m 'Update profile SVG' || echo 'No changes to commit'
-          git remote set-url origin https://itsmeyessir:${{ secrets.readme }}@github.com/itsmeyessir/itsmeyessir.git
           git push origin main
