@@ -22,7 +22,7 @@ text, tspan {white-space: pre;}
 <!-- Left column: OS to IDE -->
 <text x="60" y="120" fill="#c9d1d9">
   <tspan x="60" y="120" class="cc">. </tspan><tspan class="key">OS</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value" id="os">macOS, Linux, Windows</tspan>
-  <tspan x="60" y="160" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc"> ...................... </tspan><tspan class="value" id="uptime">2 years, 10 months, 18 days</tspan>
+  <tspan x="60" y="160" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc"> .......... </tspan><tspan class="value" id="uptime">2 years, 10 months, 18 days</tspan>
   <tspan x="60" y="200" class="cc">. </tspan><tspan class="key">Host</tspan>:<tspan class="cc"> .............. </tspan><tspan class="value" id="host">National University - Manila</tspan>
   <tspan x="60" y="240" class="cc">. </tspan><tspan class="key">Kernel</tspan>:<tspan class="cc"> ................... </tspan><tspan class="value" id="kernel">4th-Year CS Student</tspan>
   <tspan x="60" y="280" class="cc">. </tspan><tspan class="key">IDE</tspan>:<tspan class="cc"> ................. </tspan><tspan class="value" id="ide">VSCode, Android Studio</tspan>
