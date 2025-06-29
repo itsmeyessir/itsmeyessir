@@ -29,9 +29,6 @@ jobs:
           MY_PAT: ${{ secrets.readme }} 
         run: python update_svg.py
 
-      # You no longer need to explicitly set the remote URL or unset credential helper
-      # because the 'token' in actions/checkout handles authentication.
-
       - name: Commit and push changes
         run: |
           git config user.name 'itsmeyessir'
