@@ -70,25 +70,49 @@ def fetch_github_stats():
         print("[ERROR] MY_PAT is not set. Check your workflow secret name and value.")
         raise SystemExit(1)
     headers = {'Authorization': f'bearer {GITHUB_TOKEN}'}
-    variables = {
-        'login': USERNAME,
-        'from': '2008-01-01T00:00:00Z',  # GitHub launch year, covers all years
-        'to': datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+    # Get all years from 2022 to current year
+    start_year = 2022
+    end_year = datetime.utcnow().year
+    contribs_sum = {
+        'totalCommitContributions': 0,
+        'totalRepositoriesWithContributedCommits': 0,
+        'totalPullRequestContributions': 0,
+        'totalIssueContributions': 0,
+        'totalPullRequestReviewContributions': 0
     }
-    response = requests.post(
-        'https://api.github.com/graphql',
-        json={'query': graphql_query, 'variables': variables},
-        headers=headers
-    )
-    if response.status_code != 200:
-        print(f"[ERROR] GitHub API returned status {response.status_code}")
-        print(f"[ERROR] Response: {response.text}")
-        raise SystemExit(1)
-    data = response.json().get('data', {}).get('user')
-    if not data:
-        print(f"[ERROR] No user data returned. Full response: {response.text}")
-        raise SystemExit(1)
-    return data
+    for year in range(start_year, end_year + 1):
+        from_date = f"{year}-01-01T00:00:00Z"
+        to_date = f"{year}-12-31T23:59:59Z"
+        variables = {
+            'login': USERNAME,
+            'from': from_date,
+            'to': to_date
+        }
+        response = requests.post(
+            'https://api.github.com/graphql',
+            json={'query': graphql_query, 'variables': variables},
+            headers=headers
+        )
+        if response.status_code != 200:
+            print(f"[ERROR] GitHub API returned status {response.status_code}")
+            print(f"[ERROR] Response: {response.text}")
+            raise SystemExit(1)
+        user_data = response.json().get('data', {}).get('user')
+        if not user_data:
+            print(f"[ERROR] No user data returned. Full response: {response.text}")
+            raise SystemExit(1)
+        c = user_data['contributionsCollection']
+        contribs_sum['totalCommitContributions'] += c['totalCommitContributions']
+        contribs_sum['totalRepositoriesWithContributedCommits'] += c['totalRepositoriesWithContributedCommits']
+        contribs_sum['totalPullRequestContributions'] += c['totalPullRequestContributions']
+        contribs_sum['totalIssueContributions'] += c['totalIssueContributions']
+        contribs_sum['totalPullRequestReviewContributions'] += c['totalPullRequestReviewContributions']
+        # Save the first user_data for repo, followers, stars, id
+        if year == start_year:
+            base_data = user_data
+    # Use the last year for repo, followers, stars, id (should be the same for all years)
+    base_data['contributionsCollection'] = contribs_sum
+    return base_data
 
 def calculate_uptime():
     start_date = date(2022, 8, 16)
