@@ -11,28 +11,32 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          # Use your PAT for authentication during checkout
+          token: ${{ secrets.readme }} 
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+
       - name: Install dependencies
         run: pip install requests
+
       - name: Run update script
+        # MY_PAT is still needed here for your Python script if it makes API calls
         env:
-          MY_PAT: ${{ secrets.readme }}
+          MY_PAT: ${{ secrets.readme }} 
         run: python update_svg.py
-      - name: Show git remote
-        run: git remote -v
-      - name: Set remote URL to use PAT
-        run: git remote set-url origin https://itsmeyessir:${{ secrets.readme }}@github.com/itsmeyessir/itsmeyessir.git
-      - name: Show git remote (after set-url)
-        run: git remote -v
-      - name: Unset git credential helper
-        run: git config --unset-all credential.helper || echo 'No credential helper set'
+
+      # You no longer need to explicitly set the remote URL or unset credential helper
+      # because the 'token' in actions/checkout handles authentication.
+
       - name: Commit and push changes
         run: |
           git config user.name 'itsmeyessir'
           git config user.email 'espaldonrobbie88@gmail.com'
           git add dark_mode.svg light_mode.svg
           git commit -m 'Update profile SVGs' || echo 'No changes to commit'
-          git push origin main
+          # Push using the token provided to actions/checkout
+          git push
