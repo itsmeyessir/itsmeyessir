@@ -29,7 +29,6 @@ query($login: String!, $from: DateTime!, $to: DateTime!) {
       totalRepositoriesWithContributedIssues
       totalRepositoriesWithContributedPullRequests
       totalRepositoriesWithContributedPullRequestReviews
-      totalContributions
     }
     followers { totalCount }
     starredRepositories { totalCount }
@@ -165,6 +164,12 @@ def main():
     total_add, total_del = get_total_loc(repos, headers)
     loc_count = total_add - total_del
     contribs = data['contributionsCollection']
+    total_contributions = (
+        contribs['totalCommitContributions'] +
+        contribs['totalPullRequestContributions'] +
+        contribs['totalIssueContributions'] +
+        contribs['totalPullRequestReviewContributions']
+    )
     stats = {
         'repo_count': data['repositories']['totalCount'],
         'commit_count': contribs['totalCommitContributions'],
@@ -174,7 +179,7 @@ def main():
         'loc_count': loc_count,
         'loc_add': total_add,
         'loc_del': total_del,
-        'total_contributions': contribs['totalContributions'],
+        'total_contributions': total_contributions,
         'pr_count': contribs['totalPullRequestContributions'],
         'issue_count': contribs['totalIssueContributions'],
         'review_count': contribs['totalPullRequestReviewContributions']
