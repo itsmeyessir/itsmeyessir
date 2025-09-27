@@ -22,7 +22,7 @@ text, tspan {white-space: pre;}
 <!-- Left column: OS to IDE -->
 <text x="60" y="120" fill="#c9d1d9">
   <tspan x="60" y="120" class="cc">. </tspan><tspan class="key">OS</tspan>:<tspan class="cc"> ........................ </tspan><tspan class="value" id="os">macOS, Linux, Windows</tspan>
-  <tspan x="60" y="160" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc"> .......... </tspan><tspan class="value" id="uptime">3 years, 1 months, 12 days</tspan>
+  <tspan x="60" y="160" class="cc">. </tspan><tspan class="key">Uptime</tspan>:<tspan class="cc"> .......... </tspan><tspan class="value" id="uptime">3 years, 1 months, 13 days</tspan>
   <tspan x="60" y="200" class="cc">. </tspan><tspan class="key">Host</tspan>:<tspan class="cc"> .............. </tspan><tspan class="value" id="host">National University - Manila</tspan>
   <tspan x="60" y="240" class="cc">. </tspan><tspan class="key">Kernel</tspan>:<tspan class="cc"> ................... </tspan><tspan class="value" id="kernel">4th-Year CS Student</tspan>
   <tspan x="60" y="280" class="cc">. </tspan><tspan class="key">IDE</tspan>:<tspan class="cc"> ................. </tspan><tspan class="value" id="ide">VSCode, Android Studio</tspan>
@@ -45,12 +45,12 @@ text, tspan {white-space: pre;}
 <!-- GitHub Stats section -->
 <text x="570" y="370" fill="#c9d1d9">
   <tspan x="570" y="370" font-size="20px">- GitHub Stats -</tspan>
-  <tspan x="570" y="410" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc"> .... </tspan><tspan class="value" id="repo_count">36</tspan> {<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_count">35</tspan>} | <tspan class="key">Stars</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="star_count">3</tspan>
-  <tspan x="570" y="450" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="commit_count">418</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="follower_count">12</tspan>
-  <tspan x="570" y="490" class="cc">. </tspan><tspan class="key">Total Contributions</tspan>:<tspan class="cc"> </tspan><tspan class="value" id="total_contributions">435</tspan>
+  <tspan x="570" y="410" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc"> .... </tspan><tspan class="value" id="repo_count">37</tspan> {<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_count">36</tspan>} | <tspan class="key">Stars</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="star_count">3</tspan>
+  <tspan x="570" y="450" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="commit_count">420</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="follower_count">12</tspan>
+  <tspan x="570" y="490" class="cc">. </tspan><tspan class="key">Total Contributions</tspan>:<tspan class="cc"> </tspan><tspan class="value" id="total_contributions">437</tspan>
   <tspan x="570" y="530" class="cc">. </tspan><tspan class="key">PRs</tspan>:<tspan class="cc"> </tspan><tspan class="value" id="pr_count">17</tspan> | <tspan class="key">Issues</tspan>:<tspan class="cc"> </tspan><tspan class="value" id="issue_count">0</tspan> | <tspan class="key">Reviews</tspan>:<tspan class="cc"> </tspan><tspan class="value" id="review_count">0</tspan>
-  <tspan x="570" y="570" class="cc">. </tspan><tspan class="key">Lines of Code</tspan>:<tspan class="cc">. </tspan><tspan class="value" id="loc_count">-2,699,539</tspan> ( <tspan class="addColor" id="loc_add">283,051</tspan><tspan class="addColor">++</tspan>, <tspan class="delColor" id="loc_del">2,982,590</tspan><tspan class="delColor">--</tspan> )
-  <tspan x="570" y="410" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc"> .... </tspan><tspan class="value" id="repo_count">36</tspan> {<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_count">35</tspan>} | <tspan class="key">Stars</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="star_count">3</tspan>
-  <tspan x="570" y="450" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="commit_count">418</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="follower_count">12</tspan>
+  <tspan x="570" y="570" class="cc">. </tspan><tspan class="key">Lines of Code</tspan>:<tspan class="cc">. </tspan><tspan class="value" id="loc_count">-2,697,332</tspan> ( <tspan class="addColor" id="loc_add">285,258</tspan><tspan class="addColor">++</tspan>, <tspan class="delColor" id="loc_del">2,982,590</tspan><tspan class="delColor">--</tspan> )
+  <tspan x="570" y="410" class="cc">. </tspan><tspan class="key">Repos</tspan>:<tspan class="cc"> .... </tspan><tspan class="value" id="repo_count">37</tspan> {<tspan class="key">Contributed</tspan>: <tspan class="value" id="contrib_count">36</tspan>} | <tspan class="key">Stars</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="star_count">3</tspan>
+  <tspan x="570" y="450" class="cc">. </tspan><tspan class="key">Commits</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="commit_count">420</tspan> | <tspan class="key">Followers</tspan>:<tspan class="cc"> ....... </tspan><tspan class="value" id="follower_count">12</tspan>
 </text>
 </svg>
